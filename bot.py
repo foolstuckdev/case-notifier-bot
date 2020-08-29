@@ -160,7 +160,7 @@ def main():
 
     # Start the Bot - comment below line when running on local [changes the polling method to webhook]
     updater.start_webhook(listen="0.0.0.0",port=int(PORT),url_path=API_KEY)
-    updater.bot.setWebhook('https://https://case-notifier.herokuapp.com/' + API_KEY)
+    updater.bot.setWebhook('https://case-notifier.herokuapp.com/' + API_KEY)
 
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
@@ -170,11 +170,6 @@ def main():
 
 
 if __name__ == '__main__':
-    import socket
-    hostname = socket.gethostname()
-    ip_address = socket.gethostbyname(hostname)
-    logger.info(hostname)
-    logger.info(ip_address)
     try:
         main()
     except Exception as e:
