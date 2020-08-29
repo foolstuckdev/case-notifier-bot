@@ -16,7 +16,7 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
 # load env variables
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
-
+PORT = int(os.environ.get('PORT', 5000))
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -155,8 +155,13 @@ def main():
 
     dp.add_handler(conv_handler)
 
-    # Start the Bot
-    updater.start_polling()
+    # Start the Bot - uncomment below line when running on local
+    # updater.start_polling()
+
+    # Start the Bot - comment below line when running on local [changes the polling method to webhook]
+    updater.start_webhook(listen="0.0.0.0",port=int(PORT),url_path=API_KEY)
+    updater.bot.setWebhook('https://https://case-notifier.herokuapp.com/' + API_KEY)
+
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
