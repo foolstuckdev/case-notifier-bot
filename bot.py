@@ -170,6 +170,11 @@ def main():
 
 
 if __name__ == '__main__':
+    import socket
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    logger.info(hostname)
+    logger.info(ip_address)
     try:
         main()
     except Exception as e:
