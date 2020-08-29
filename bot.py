@@ -173,4 +173,4 @@ if __name__ == '__main__':
     try:
         main()
     except Exception as e:
-       logger.exception("error",e.args[0])
+       logger.error(e.message)
